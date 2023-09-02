@@ -1,3 +1,12 @@
+import Intro from "@/components/Intro";
+import Layout from "@/components/Layout";
+
 export default function Home() {
-  return <main className="w-full h-[200vh]">asfd</main>;
+  return (
+    <Layout>
+      <main className="w-full h-screen flex flex-col">
+        <Intro type="sejong" />
+      </main>
+    </Layout>
+  );
 }
