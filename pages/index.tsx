@@ -1,12 +1,16 @@
+import { useLayout } from "@/Contexts/useLayoutContext";
 import Intro from "@/components/Intro";
-import Layout from "@/components/Layout";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { setHeader, setHideText } = useLayout();
+  useEffect(() => {
+    setHeader(false);
+    setHideText(true);
+  }, []);
   return (
-    <Layout>
-      <main className="w-full h-screen flex flex-col">
-        <Intro type="sejong" />
-      </main>
-    </Layout>
+    <main className="w-full h-screen flex flex-col">
+      <Intro type="sejong" />
+    </main>
   );
 }

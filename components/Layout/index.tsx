@@ -1,5 +1,6 @@
 import { ReactNode, Fragment } from "react";
 import cc from "classcat";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Layout({
   header = false,
@@ -9,7 +10,7 @@ export default function Layout({
 }: {
   header?: boolean;
   background?: string;
-  text?: string;
+  text: string;
   children: ReactNode;
 }) {
   return (
@@ -30,13 +31,20 @@ export default function Layout({
           src="/logo.png"
           className={cc(["w-full", background && "opacity-0"])}
         />
-        {text && (
-          <div className="absolute z-[30] inset-0 flex flex-col text-3xl items-center justify-center text-white font-[chosun]">
-            {text.split("\n").map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {text && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute z-[30] inset-0 flex flex-col text-3xl items-center justify-center text-white font-[chosun]"
+            >
+              {text.split("\n").map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       <div className="w-full max-w-[800px] flex justify-center shrink-0 z-[20]">
         <img
