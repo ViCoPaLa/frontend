@@ -15,7 +15,7 @@ export default function Hint({ text }: { text: string }) {
   }, [isOpened]);
 
   return (
-    <div className="fixed w-full xl:w-1/2 left-0 bottom-0 gap-12 flex flex-col items-center text-xl py-8">
+    <div className="fixed w-full xl:w-1/2 left-0 bottom-20 xl:bottom-0 gap-8 flex flex-col items-center text-xl py-8">
       <AnimatePresence>
         {isOpened && (
           <motion.div
@@ -35,15 +35,15 @@ export default function Hint({ text }: { text: string }) {
       </AnimatePresence>
       <button
         className={cc([
-          "flex gap-3 items-center rounded px-4 py-2 hover:bg-black/20 transition-colors cursor-pointer xl:text-white",
-          isBounce && "animate-bounce",
+          "flex gap-3 items-center rounded-lg px-4 py-2 xl:hover:bg-black/20 transition-colors cursor-pointer xl:text-white bg-white xl:bg-transparent",
+          isBounce && "animate-pulse",
         ])}
         onClick={() => {
           setIsOpened((s) => !s);
           setIsBounce(false);
         }}
       >
-        <Icons.Lightbulb />
+        <Icons.Lightbulb className="w-6 h-6 xl:w-10 xl:h-10" />
         도움말
       </button>
     </div>
