@@ -12,6 +12,13 @@ const config: Config = {
         primary: "#6F1329",
         background: "#E2E6E7",
         stroke: "#8E8E8E",
+        gray: {
+          chat: "#C6C6C6",
+        },
+        green: {
+          mute: "#385A46",
+          DEFAULT: "",
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

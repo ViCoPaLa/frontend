@@ -1,4 +1,5 @@
 import { useLayout } from "@/Contexts/useLayoutContext";
+import ChatBubble from "@/components/Chat/Bubble";
 import InputWithButton from "@/components/Common/InputWithButton";
 import Hint from "@/components/Hint";
 import Icons from "@/components/Icons";
@@ -23,9 +24,10 @@ export default function Scene() {
           <Icons.Location className="w-8 h-8 stroke-black" />
           집현전
         </div>
-        <div className="w-full h-full overflow-y-auto pt-16 pb-24">
-          <div className="h-[150vh] bg-gradient-to-b from-red-300 to-red-500">
-            asdfasfd
+        <div className="w-full h-full overflow-y-auto pt-20 pb-24">
+          <div className="">
+            <ChatBubble texts={["asdf", "asdf"]} isUser={false} />
+            <ChatBubble texts={["asdf"]} isUser={true} />
           </div>
         </div>
         <div className="absolute w-full bottom-0 pb-8 px-4">
