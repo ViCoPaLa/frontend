@@ -10,7 +10,11 @@
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
+::-webkit-scrollbar-thumb {
+  display: hidden;
+}
 
+/* 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(150, 150, 150, 0.6);
   border-radius: 14px;
@@ -21,4 +25,4 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(150, 150, 150);
 }
-
+ */
