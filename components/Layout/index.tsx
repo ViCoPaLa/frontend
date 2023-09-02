@@ -3,7 +3,10 @@ import { ReactNode } from "react";
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="w-full h-screen bg-primary flex items-center justify-center">
-      <div className="lg:absolute w-[800px] right-0 flex">
+      <div className="w-full hidden xl:flex items-center justify-center pl-36 pr-24">
+        <img src="/logo.png" className="w-full" />
+      </div>
+      <div className="w-full max-w-[800px] flex justify-center shrink-0">
         <img
           src="/border-l.png"
           className="hidden lg:block h-screen object-contain translate-x-1/3"
