@@ -18,7 +18,7 @@ export default function Layout({
       style={{ backgroundImage: `url(${background})` || "none" }}
     >
       {header && (
-        <header className="fixed inset-x-0 top-0 px-10 py-8 z-[30]">
+        <header className="fixed left-0 top-0 px-10 py-8 z-[30] xl:block hidden">
           <img src="/header-logo.png" />
         </header>
       )}
