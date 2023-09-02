@@ -64,7 +64,7 @@ export default function Layout({
           ])}
         >
           <AnimatePresence>
-            {isBackgroundOpened && (
+            {isBackgroundOpened && background && (
               <>
                 <motion.div
                   initial={{ opacity: 1 }}
