@@ -26,7 +26,7 @@ export default function ChatBubble({
           />
           <div
             className={cc([
-              "px-4 py-2 max-w-xs rounded-lg",
+              "px-3 py-2 max-w-xs rounded-xl",
               isUser
                 ? "bg-gray-chat text-black group-first-of-type:rounded-tr-none"
                 : "bg-green-mute text-white group-first-of-type:rounded-tl-none",
