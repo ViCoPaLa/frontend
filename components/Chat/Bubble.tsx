@@ -11,7 +11,7 @@ export default function ChatBubble({
   return (
     <div
       className={cc([
-        "w-full flex mb-6",
+        "w-full flex mb-6 px-4 xl:pr-0 xl:pl-2",
         isUser ? "flex-row-reverse" : "flex-row",
       ])}
     >
@@ -25,7 +25,7 @@ export default function ChatBubble({
             <div
               key={i}
               className={cc([
-                "w-full flex px-4 justify-start group items-start",
+                "w-full flex px-3 justify-start group items-start",
                 isUser ? "flex-row-reverse" : "flex-row",
               ])}
             >
