@@ -26,7 +26,13 @@ export default function Scene() {
         </div>
         <div className="w-full h-full overflow-y-auto pt-20 pb-24">
           <div className="">
-            <ChatBubble texts={["asdf", "asdf"]} isUser={false} />
+            <ChatBubble
+              texts={[
+                "백성들을 위한 글자를 만들어봅시다 백성들을 위한 글자를 만들어봅시다",
+                "asdf",
+              ]}
+              isUser={false}
+            />
             <ChatBubble texts={["asdf"]} isUser={true} />
           </div>
         </div>

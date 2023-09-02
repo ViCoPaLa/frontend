@@ -14,13 +14,13 @@ export default function ChatBubble({
         <div
           key={i}
           className={cc([
-            "w-full flex px-2 justify-start group",
+            "w-full flex px-2 justify-start group items-start",
             isUser ? "flex-row-reverse" : "flex-row",
           ])}
         >
           <BubbleTriangle
             className={cc([
-              "w-4 -translate-y-[13.5px] opacity-0 group-first-of-type:opacity-100",
+              "w-4 opacity-0 group-first-of-type:opacity-100",
               isUser ? "fill-gray-chat -scale-x-100" : "fill-green-mute",
             ])}
           />
