@@ -6,25 +6,27 @@ import Icons from "@/components/Icons";
 import { useEffect } from "react";
 
 export default function Scene() {
-  const { setHeader, setBackground, setHideText, setText } = useLayout();
+  const { setHeader, setBackground, setHideText, setText, setDarker } =
+    useLayout();
 
   useEffect(() => {
-    setHeader(true);
+    setHeader(false);
     setBackground("/backgrounds/1.jfif");
     setText(
       `1397년\n조선 개국 5년 째 되는 해,\n세종이 새로운 국왕으로 즉위했다.`
     );
     setHideText(false);
+    setDarker(true);
   }, []);
 
   return (
     <>
-      <main className="relative w-full h-screen flex flex-col ">
-        <div className="absolute top-0 w-full h-16 flex items-center justify-center gap-2 text-2xl">
+      <main className="relative w-full h-full flex flex-col">
+        <div className="absolute top-2 w-full h-12 xl:h-16 flex items-center justify-center gap-2 text-xl xl:text-2xl">
           <Icons.Location className="w-8 h-8 stroke-black" />
           집현전
         </div>
-        <div className="w-full h-full overflow-y-auto pt-20 pb-24">
+        <div className="w-full h-full overflow-y-auto pt-20 xl:pt-20 pb-24">
           <div className="">
             <ChatBubble
               texts={[

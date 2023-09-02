@@ -9,7 +9,7 @@ export default function Home() {
     setHideText(true);
   }, []);
   return (
-    <main className="w-full h-screen flex flex-col">
+    <main className="w-full h-full flex flex-col">
       <Intro type="sejong" />
     </main>
   );
