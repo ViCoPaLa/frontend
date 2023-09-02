@@ -22,7 +22,7 @@ export default function Hint({ text }: { text: string }) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0, transition: { duration: 0.15 } }}
-            className="p-8 bg-black/70 origin-top-right xl:origin-bottom rounded-lg"
+            className="p-8 xl:w-full xl:max-w-lg bg-black/70 origin-top-right xl:origin-bottom rounded-lg"
           >
             <div
               className="text-sm text-white font-medium leading-6 text-center [&>h1]:text-lg [&>strong]:text-base"
