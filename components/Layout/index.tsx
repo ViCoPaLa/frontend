@@ -1,6 +1,7 @@
-import { ReactNode, Fragment } from "react";
+import { ReactNode, useState } from "react";
 import cc from "classcat";
 import { AnimatePresence, motion } from "framer-motion";
+import { splitText } from "@/utils/splitText";
 
 export default function Layout({
   header = false,
@@ -15,6 +16,7 @@ export default function Layout({
   text: string;
   children: ReactNode;
 }) {
+  const [isBackgroundOpened, setIsBackgroundOpened] = useState(true);
   return (
     <div
       className="w-full h-screen bg-primary flex items-center justify-center bg-cover bg-center"
@@ -45,9 +47,7 @@ export default function Layout({
               exit={{ opacity: 0 }}
               className="absolute z-[30] inset-0 flex flex-col text-3xl items-center justify-center text-white font-[chosun]"
             >
-              {text.split("\n").map((line, i) => (
-                <div key={i}>{line}</div>
-              ))}
+              {splitText(text)}
             </motion.div>
           )}
         </AnimatePresence>
@@ -63,6 +63,20 @@ export default function Layout({
             header && "pt-16",
           ])}
         >
+          <AnimatePresence>
+            {isBackgroundOpened && (
+              <motion.div
+                exit={{ opacity: 0, transition: { duration: 1 } }}
+                className="xl:hidden w-full h-full absolute z-[40] bg-cover bg-center"
+                style={{ backgroundImage: `url(${background})` || "none" }}
+                onClick={() => setIsBackgroundOpened(false)}
+              >
+                <div className="w-full h-full flex flex-col text-2xl items-center justify-center p-8 text-white font-[chosun]">
+                  {splitText(text)}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           {children}
         </div>
         <img
