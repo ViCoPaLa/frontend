@@ -65,16 +65,30 @@ export default function Layout({
         >
           <AnimatePresence>
             {isBackgroundOpened && (
-              <motion.div
-                exit={{ opacity: 0, transition: { duration: 1 } }}
-                className="xl:hidden w-full h-full absolute z-[40] bg-cover bg-center"
-                style={{ backgroundImage: `url(${background})` || "none" }}
-                onClick={() => setIsBackgroundOpened(false)}
-              >
-                <div className="w-full h-full flex flex-col text-2xl items-center justify-center p-8 text-white font-[chosun]">
-                  {splitText(text)}
-                </div>
-              </motion.div>
+              <>
+                <motion.div
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: 0, transition: { duration: 2 } }}
+                  className="xl:hidden w-full h-full absolute z-[41] bg-black"
+                  onClick={() => setIsBackgroundOpened(false)}
+                ></motion.div>
+                <motion.div
+                  exit={{ opacity: 0, transition: { duration: 1 } }}
+                  className="xl:hidden w-full h-full absolute z-[40] bg-cover bg-center"
+                  style={{ backgroundImage: `url(${background})` || "none" }}
+                >
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: { delay: 2, duration: 1 },
+                    }}
+                    className="w-full h-full flex flex-col text-2xl items-center justify-center p-8 text-white font-[chosun]"
+                  >
+                    {splitText(text)}
+                  </motion.div>
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
           {children}
