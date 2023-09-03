@@ -3,8 +3,9 @@ import Intro from "@/components/Intro";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { setHeader, setHideText } = useLayout();
+  const { setBackground, setHeader, setHideText } = useLayout();
   useEffect(() => {
+    setBackground("");
     setHeader(false);
     setHideText(true);
   }, []);

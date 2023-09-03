@@ -1,11 +1,16 @@
 import cc from "classcat";
+import { motion } from "framer-motion";
 import BubbleTriangle from "./BubbleTriangle.svg";
 
 export default function ChatBubble({
   isUser,
+  person,
+  image,
   texts,
 }: {
   isUser: boolean;
+  person: string;
+  image: string;
   texts: string[];
 }) {
   return (
@@ -16,17 +21,26 @@ export default function ChatBubble({
       ])}
     >
       {!isUser && (
-        <div className="rounded-full overflow-clip w-12 h-12 bg-white"></div>
+        <div className="rounded-full overflow-clip w-12 h-12 bg-white">
+          <img src={image} className="w-full h-full object-cover" />
+        </div>
       )}
       <div>
-        {!isUser && <div className="ml-6 text-sm mb-2">학자 성삼문</div>}
+        {!isUser && <div className="ml-6 text-sm mb-2">{person}</div>}
         <div className="flex flex-col gap-2">
           {texts.map((text, i) => (
-            <div
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{
+                scale: 1,
+                transition: { duration: 0.2, delay: i * 0.5 },
+              }}
               key={i}
               className={cc([
                 "w-full flex px-3 justify-start group items-start",
-                isUser ? "flex-row-reverse" : "flex-row",
+                isUser
+                  ? "flex-row-reverse origin-top-right"
+                  : "flex-row origin-top-left",
               ])}
             >
               <BubbleTriangle
@@ -45,7 +59,7 @@ export default function ChatBubble({
               >
                 {text}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

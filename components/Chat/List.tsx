@@ -1,18 +1,18 @@
-import InputWithButton from "../Common/InputWithButton";
-import Icons from "../Icons";
+import { ChatType } from "@/types/chat";
+import ChatBubble from "./Bubble";
 
-export default function ChatList() {
+export default function ChatList({ chats }: { chats: ChatType[] }) {
   return (
-    <>
-      <div className="w-full h-full overflow-auto">
-        <div className="h-[150vh]">dddf</div>
-      </div>
-      <div className="w-full shrink-0 p-2 pb-8">
-        <InputWithButton
-          button={<Icons.Send className="w-6 h-6 stroke-white" />}
-          onClick={() => {}}
+    <div className="">
+      {chats.map((chat, i) => (
+        <ChatBubble
+          key={i}
+          texts={chat.message}
+          image={chat.image}
+          person={chat.person}
+          isUser={false}
         />
-      </div>
-    </>
+      ))}
+    </div>
   );
 }

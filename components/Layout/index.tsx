@@ -1,4 +1,10 @@
-import { ReactNode, useState } from "react";
+import {
+  ReactNode,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import cc from "classcat";
 import { AnimatePresence, motion } from "framer-motion";
 import { splitText } from "@/utils/splitText";
@@ -8,15 +14,26 @@ export default function Layout({
   darker = false,
   background,
   text,
+  setIsEndedBackground,
   children,
 }: {
   header?: boolean;
   darker?: boolean;
   background?: string;
   text: string;
+  setIsEndedBackground: Dispatch<SetStateAction<boolean>>;
   children: ReactNode;
 }) {
   const [isBackgroundOpened, setIsBackgroundOpened] = useState(true);
+
+  useEffect(() => {
+    setIsBackgroundOpened(true);
+  }, [background]);
+  useEffect(() => {
+    if (isBackgroundOpened) setIsEndedBackground(false);
+    else setIsEndedBackground(true);
+  }, [isBackgroundOpened, setIsEndedBackground]);
+
   return (
     <div
       className="w-full h-screen bg-primary flex items-center justify-center bg-cover bg-center"
@@ -59,7 +76,7 @@ export default function Layout({
         />
         <div
           className={cc([
-            "w-full max-w-md h-screen overflow-auto bg-background z-[25] xl:pt-0",
+            "relative w-full max-w-md h-screen overflow-auto bg-background z-[25] xl:pt-0",
             header && "pt-16",
           ])}
         >
@@ -83,7 +100,7 @@ export default function Layout({
                       opacity: 1,
                       transition: { delay: 2, duration: 1 },
                     }}
-                    className="w-full h-full flex flex-col text-2xl items-center justify-center p-8 text-white font-[chosun]"
+                    className="w-full h-full flex flex-col text-2xl items-center text-center justify-center p-8 text-white font-[chosun]"
                   >
                     {splitText(text)}
                   </motion.div>

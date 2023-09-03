@@ -1,3 +1,4 @@
+import cc from "classcat";
 import { ReactNode } from "react";
 
 export default function InputWithButton({
@@ -10,9 +11,15 @@ export default function InputWithButton({
   onClick: Function;
 }) {
   return (
-    <div className="flex gap-2 w-full border border-stroke rounded-lg p-2 bg-white">
+    <div
+      className={cc([
+        "flex gap-2 w-full border border-stroke rounded-lg p-2",
+        disabled ? "bg-background" : "bg-white",
+      ])}
+    >
       <div className="w-full px-2 flex items-center">
         <textarea
+          disabled={disabled}
           className="w-full bg-transparent focus:outline-none resize-none"
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {

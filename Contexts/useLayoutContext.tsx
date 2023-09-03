@@ -19,6 +19,8 @@ interface LayoutType {
   setHeader: Dispatch<SetStateAction<boolean>>;
   darker: boolean;
   setDarker: Dispatch<SetStateAction<boolean>>;
+  isEndedBackground: boolean;
+  setIsEndedBackground: Dispatch<SetStateAction<boolean>>;
 }
 
 const layoutContext = createContext<LayoutType>({
@@ -32,6 +34,8 @@ const layoutContext = createContext<LayoutType>({
   setHeader: () => {},
   darker: false,
   setDarker: () => {},
+  isEndedBackground: false,
+  setIsEndedBackground: () => {},
 });
 
 export default function LayoutProvider({ children }: { children: ReactNode }) {
@@ -40,6 +44,7 @@ export default function LayoutProvider({ children }: { children: ReactNode }) {
   const [background, setBackground] = useState("");
   const [header, setHeader] = useState(false);
   const [darker, setDarker] = useState(false);
+  const [isEndedBackground, setIsEndedBackground] = useState(false);
 
   return (
     <layoutContext.Provider
@@ -54,6 +59,8 @@ export default function LayoutProvider({ children }: { children: ReactNode }) {
         setBackground,
         darker,
         setDarker,
+        isEndedBackground,
+        setIsEndedBackground,
       }}
     >
       <Layout
@@ -61,6 +68,7 @@ export default function LayoutProvider({ children }: { children: ReactNode }) {
         text={hideText ? "" : text}
         background={background}
         darker={darker}
+        setIsEndedBackground={setIsEndedBackground}
       >
         {children}
       </Layout>
