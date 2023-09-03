@@ -1,5 +1,5 @@
 import cc from "classcat";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 export default function InputWithButton({
   button,
@@ -10,6 +10,7 @@ export default function InputWithButton({
   disabled?: boolean;
   onClick: Function;
 }) {
+  const [text, setText] = useState("");
   return (
     <div
       className={cc([
@@ -21,12 +22,15 @@ export default function InputWithButton({
         <textarea
           disabled={disabled}
           className="w-full bg-transparent focus:outline-none resize-none"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               //@ts-ignore
               if (e.isComposing) return;
               e.preventDefault();
-              onClick();
+              onClick(text);
+              setText("");
             }
           }}
         />
@@ -34,7 +38,10 @@ export default function InputWithButton({
       <button
         disabled={disabled}
         className="bg-[#0D622F] px-4 py-3 rounded-lg hover:bg-[#123821] disabled:bg-gray-500 transition-colors"
-        onClick={() => onClick()}
+        onClick={() => {
+          onClick(text);
+          setText("");
+        }}
       >
         {button}
       </button>

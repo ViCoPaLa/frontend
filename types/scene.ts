@@ -11,4 +11,5 @@ export interface SceneType {
   background_image: string;
   location: string;
   chats: ChatType[];
+  is_user_scene: boolean;
 }

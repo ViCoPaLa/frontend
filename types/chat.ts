@@ -1,5 +1,6 @@
 export interface ChatType {
-  person: string;
-  image: string;
+  isUser: boolean;
+  person?: string;
+  image?: string;
   message: string[];
 }

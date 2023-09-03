@@ -3,13 +3,18 @@ import { Dispatch, SetStateAction, useState } from "react";
 import Icons from "../Icons";
 import { useLayout } from "@/Contexts/useLayoutContext";
 import cc from "classcat";
+import { getNumberToString } from "@/utils/getNumberToString";
 
 export default function MissionModal({
   isOpened,
   setIsOpened,
+  index,
+  text,
 }: {
   isOpened: boolean;
   setIsOpened: Dispatch<SetStateAction<boolean>>;
+  index: number;
+  text: string;
 }) {
   const [disableClose, setDisableClose] = useState(true);
   const { isEndedBackground } = useLayout();
@@ -53,8 +58,10 @@ export default function MissionModal({
                 onAnimationComplete={() => setDisableClose(false)}
                 className="absolute font-[chosun] text-center flex flex-col items-center gap-1"
               >
-                <div className="text-sm font-semibold">첫 번째 임무</div>
-                <div className="text-lg font-bold">어쩌구를 저쩌구하라</div>
+                <div className="text-sm font-semibold">
+                  {getNumberToString(index)} 번째 임무
+                </div>
+                <div className="text-lg font-bold px-16 break-keep">{text}</div>
               </motion.div>
             </motion.div>
           )}

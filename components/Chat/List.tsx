@@ -1,7 +1,14 @@
 import { ChatType } from "@/types/chat";
 import ChatBubble from "./Bubble";
+import ChatLoading from "./Loading";
 
-export default function ChatList({ chats }: { chats: ChatType[] }) {
+export default function ChatList({
+  chats,
+  isLoading,
+}: {
+  chats: ChatType[];
+  isLoading: boolean;
+}) {
   return (
     <div className="">
       {chats.map((chat, i) => (
@@ -10,9 +17,10 @@ export default function ChatList({ chats }: { chats: ChatType[] }) {
           texts={chat.message}
           image={chat.image}
           person={chat.person}
-          isUser={false}
+          isUser={chat.isUser}
         />
       ))}
+      {isLoading && <ChatLoading />}
     </div>
   );
 }

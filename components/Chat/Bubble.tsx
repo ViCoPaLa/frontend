@@ -9,8 +9,8 @@ export default function ChatBubble({
   texts,
 }: {
   isUser: boolean;
-  person: string;
-  image: string;
+  person?: string;
+  image?: string;
   texts: string[];
 }) {
   return (
@@ -33,7 +33,7 @@ export default function ChatBubble({
               initial={{ scale: 0 }}
               animate={{
                 scale: 1,
-                transition: { duration: 0.2, delay: i * 0.5 },
+                transition: { duration: 0.2, delay: i * 1 },
               }}
               key={i}
               className={cc([
