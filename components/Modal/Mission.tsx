@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import Icons from "../Icons";
-import { useLayout } from "@/Contexts/useLayoutContext";
+import { useLayout } from "@/Contexts/useLayout";
 import cc from "classcat";
 import { getNumberToString } from "@/utils/getNumberToString";
 

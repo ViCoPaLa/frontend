@@ -1,4 +1,4 @@
-import LayoutProvider from "@/Contexts/useLayoutContext";
+import LayoutProvider from "@/Contexts/useLayout";
 import ScreenSizeProvider from "@/Contexts/useScreenSize";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";

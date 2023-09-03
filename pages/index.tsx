@@ -1,4 +1,4 @@
-import { useLayout } from "@/Contexts/useLayoutContext";
+import { useLayout } from "@/Contexts/useLayout";
 import Intro from "@/components/Intro";
 import { useEffect } from "react";
 

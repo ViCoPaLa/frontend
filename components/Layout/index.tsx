@@ -9,6 +9,7 @@ import cc from "classcat";
 import { AnimatePresence, motion } from "framer-motion";
 import { splitText } from "@/utils/splitText";
 import { useScreenSize } from "@/Contexts/useScreenSize";
+import AlertProvider from "@/Contexts/useAlert";
 
 export default function Layout({
   header = false,
@@ -89,35 +90,37 @@ export default function Layout({
             header && "pt-16",
           ])}
         >
-          <AnimatePresence>
-            {isBackgroundOpened && background && (
-              <>
-                <motion.div
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: 0, transition: { duration: 2 } }}
-                  className="xl:hidden w-full h-full absolute z-[41] bg-black"
-                  onClick={() => setIsBackgroundOpened(false)}
-                ></motion.div>
-                <motion.div
-                  exit={{ opacity: 0, transition: { duration: 1 } }}
-                  className="xl:hidden w-full h-full absolute z-[40] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${background})` || "none" }}
-                >
+          <AlertProvider>
+            <AnimatePresence>
+              {isBackgroundOpened && background && (
+                <>
                   <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { delay: 2, duration: 1 },
-                    }}
-                    className="w-full h-full flex flex-col text-2xl items-center text-center justify-center p-8 text-white font-[chosun]"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0, transition: { duration: 2 } }}
+                    className="xl:hidden w-full h-full absolute z-[41] bg-black"
+                    onClick={() => setIsBackgroundOpened(false)}
+                  ></motion.div>
+                  <motion.div
+                    exit={{ opacity: 0, transition: { duration: 1 } }}
+                    className="xl:hidden w-full h-full absolute z-[40] bg-cover bg-center"
+                    style={{ backgroundImage: `url(${background})` || "none" }}
                   >
-                    {splitText(text)}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: { delay: 2, duration: 1 },
+                      }}
+                      className="w-full h-full flex flex-col text-2xl items-center text-center justify-center p-8 text-white font-[chosun]"
+                    >
+                      {splitText(text)}
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              </>
-            )}
-          </AnimatePresence>
-          {children}
+                </>
+              )}
+            </AnimatePresence>
+            {children}
+          </AlertProvider>
         </div>
         <img
           src="/border-r.png"

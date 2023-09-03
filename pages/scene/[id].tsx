@@ -1,4 +1,5 @@
-import { useLayout } from "@/Contexts/useLayoutContext";
+import { useAlert } from "@/Contexts/useAlert";
+import { useLayout } from "@/Contexts/useLayout";
 import ChatList from "@/components/Chat/List";
 import InputWithButton from "@/components/Common/InputWithButton";
 import Hint from "@/components/Hint";
@@ -13,6 +14,7 @@ import { useEffect, useState, useRef } from "react";
 export default function Scene({ scene }: { scene: SceneType }) {
   const { setHeader, setBackground, setHideText, setText, setDarker } =
     useLayout();
+  const { push } = useAlert();
 
   const [isMissionOpened, setIsMissionOpened] = useState(true);
 
@@ -80,6 +82,7 @@ export default function Scene({ scene }: { scene: SceneType }) {
           }
         )
       ).json();
+      push("ㅁㄴㅇㄹ");
       setChats((chats) => [
         ...chats,
         {
@@ -102,7 +105,7 @@ export default function Scene({ scene }: { scene: SceneType }) {
           setIndex((index) => index + 1);
         }}
       >
-        <div className="absolute bg-background pt-2 w-full h-12 xl:h-16 flex items-center justify-center gap-2 text-xl xl:text-2xl">
+        <div className="absolute bg-background py-2 w-full h-12 xl:h-16 flex items-center justify-center gap-2 text-xl xl:text-2xl">
           <Icons.Location className="w-8 h-8 stroke-black" />
           {scene.location}
         </div>
@@ -110,7 +113,7 @@ export default function Scene({ scene }: { scene: SceneType }) {
           className="w-full h-full overflow-y-auto pt-20 xl:pt-20 pb-32"
           ref={scrollRef}
         >
-          {!isMissionOpened && <ChatList chats={chats} isLoading={isLoading}/>}
+          {!isMissionOpened && <ChatList chats={chats} isLoading={isLoading} />}
         </div>
         <div className="absolute w-full bottom-0 pb-8 px-4">
           <InputWithButton

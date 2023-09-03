@@ -2,7 +2,7 @@ import cc from "classcat";
 import Icons from "../Icons";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLayout } from "@/Contexts/useLayoutContext";
+import { useLayout } from "@/Contexts/useLayout";
 
 export default function Hint({ text }: { text: string }) {
   const [isOpened, setIsOpened] = useState(false);
