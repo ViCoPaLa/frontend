@@ -11,6 +11,7 @@ export default function MissionModal({
   isOpened: boolean;
   setIsOpened: Dispatch<SetStateAction<boolean>>;
 }) {
+  const [disableClose, setDisableClose] = useState(true);
   const { isEndedBackground } = useLayout();
   return (
     isEndedBackground && (
@@ -24,7 +25,9 @@ export default function MissionModal({
           {isOpened && (
             <motion.div
               className="flex w-full h-full items-center justify-center p-4"
-              onClick={() => setIsOpened(false)}
+              onClick={() => {
+                if (!disableClose) setIsOpened(false);
+              }}
               initial={{ y: 0, opacity: 1 }}
               exit={{
                 y: -200,
@@ -47,6 +50,7 @@ export default function MissionModal({
                   opacity: 1,
                   transition: { delay: 1.6, duration: 0.5 },
                 }}
+                onAnimationComplete={() => setDisableClose(false)}
                 className="absolute font-[chosun] text-center flex flex-col items-center gap-1"
               >
                 <div className="text-sm font-semibold">첫 번째 임무</div>

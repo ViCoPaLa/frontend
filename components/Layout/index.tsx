@@ -8,6 +8,7 @@ import {
 import cc from "classcat";
 import { AnimatePresence, motion } from "framer-motion";
 import { splitText } from "@/utils/splitText";
+import { useScreenSize } from "@/Contexts/useScreenSize";
 
 export default function Layout({
   header = false,
@@ -25,10 +26,18 @@ export default function Layout({
   children: ReactNode;
 }) {
   const [isBackgroundOpened, setIsBackgroundOpened] = useState(true);
+  const { width } = useScreenSize();
+
+  useEffect(() => {
+    if (width >= 1280) {
+      setIsEndedBackground(true);
+    }
+  }, [width]);
 
   useEffect(() => {
     setIsBackgroundOpened(true);
   }, [background]);
+
   useEffect(() => {
     if (isBackgroundOpened) setIsEndedBackground(false);
     else setIsEndedBackground(true);

@@ -35,7 +35,9 @@ export default function Scene({ scene }: { scene: SceneType }) {
     <>
       <main
         className="relative w-full h-full flex flex-col"
-        onClick={() => setIndex((index) => index + 1)}
+        onClick={() => {
+          setIndex((index) => index + 1);
+        }}
       >
         <div className="absolute top-2 w-full h-12 xl:h-16 flex items-center justify-center gap-2 text-xl xl:text-2xl">
           <Icons.Location className="w-8 h-8 stroke-black" />
@@ -71,7 +73,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     location: "위치",
     chats: [],
     description: "",
-    mission: [],
+    mission: {
+      mission_no: 0,
+      mission_description: "",
+      mission_hint: "",
+    },
   };
   try {
     scene = await (
