@@ -7,7 +7,7 @@ export interface SceneType {
     mission_no: number;
     mission_description: string;
     mission_hint: string;
-  }[];
+  };
   background_image: string;
   location: string;
   chats: ChatType[];

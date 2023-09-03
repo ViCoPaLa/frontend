@@ -55,7 +55,7 @@ export default function Scene({ scene }: { scene: SceneType }) {
       <div className="absolute inset-x-0 bottom-28 text-gray-600 px-4 text-center animate-pulse">
         다음으로 넘어가려면 화면을 누르시오
       </div>
-      <Hint text={scene.mission[0].mission_hint} />
+      {scene.mission && <Hint text={scene.mission.mission_hint} />}
       <MissionModal
         isOpened={isMissionOpened}
         setIsOpened={setIsMissionOpened}
