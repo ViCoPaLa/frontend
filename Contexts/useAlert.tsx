@@ -17,12 +17,12 @@ export default function AlertProvider({ children }: { children: ReactNode }) {
       <AnimatePresence>
         {message && (
           <motion.div
-            className="absolute inset-0flex items-center justify-center z-[50]"
+            className="absolute inset-0 flex items-center justify-center z-[50] p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
           >
-            <div className="px-4 py-2 rounded-lg bg-white font-[chosun]">
+            <div className="px-4 py-2 rounded-lg text-lg bg-white font-[chosun] shadow-lg">
               {message}
             </div>
           </motion.div>

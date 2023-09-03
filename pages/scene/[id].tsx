@@ -82,12 +82,23 @@ export default function Scene({ scene }: { scene: SceneType }) {
           }
         )
       ).json();
-      push("ㅁㄴㅇㄹ");
+      if (
+        result.basics === "1" ||
+        result.basics === "2" ||
+        result.basics === "3"
+      )
+        push(
+          "✔" +
+            ["상형의 원리", "가획의 원리", "합용의 원리"][
+              parseInt(result.basics) - 1
+            ] +
+            "를 언급하셨습니다."
+        );
       setChats((chats) => [
         ...chats,
         {
           isUser: false,
-          ...result,
+          ...result.chat,
         },
       ]);
     } catch (e) {
